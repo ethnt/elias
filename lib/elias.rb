@@ -1,5 +1,3 @@
-require "elias/version"
-
 module Elias
-  # Your code goes here...
+  require_relative 'elias/client'
 end
