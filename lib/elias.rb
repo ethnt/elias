@@ -2,10 +2,14 @@ require 'faraday'
 require 'faraday_middleware'
 require 'hashie'
 
-require_relative 'elias/parks'
+require_relative 'elias/resort'
+require_relative 'elias/park'
 require_relative 'elias/attraction'
+require_relative 'elias/dining'
 
 module Elias
+  RESORTS = ['walt-disney-world', 'disneyland-resort', 'universal-orlando']
+
   class Client
     attr_accessor :client
 
@@ -16,7 +20,7 @@ module Elias
     end
 
     def connect!(token = nil)
-      @@connection = Faraday.new(:url => "https://touringplans.com") do |f|
+      @@connection = Faraday.new(:url => "http://touringplans.com") do |f|
         f.use FaradayMiddleware::FollowRedirects
 
         f.request  :json
@@ -32,8 +36,8 @@ module Elias
       @@connection
     end
 
-    def park
-      Elias::Park
+    def resort
+      Elias::Resort
     end
   end
 end

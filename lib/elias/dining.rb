@@ -1,5 +1,5 @@
 module Elias
-  class Attraction
+  class Dining
     def initialize(data = {})
       data.each do |k, v|
         instance_variable_set("@#{k}", v)
@@ -8,7 +8,7 @@ module Elias
     end
 
     def info
-      Elias::Attraction.new(Elias::Client.connection.get("#{self.park.permalink}/attractions/#{self.permalink}.json").body)
+      Elias::Dining.new(Elias::Client.connection.get("#{self.park.permalink}/dining/#{self.permalink}.json").body)
     end
   end
 end
