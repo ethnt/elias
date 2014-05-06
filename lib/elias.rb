@@ -6,6 +6,7 @@ require_relative 'elias/resort'
 require_relative 'elias/park'
 require_relative 'elias/attraction'
 require_relative 'elias/dining'
+require_relative 'elias/hotel'
 
 module Elias
   RESORTS = ['walt-disney-world', 'disneyland-resort', 'universal-orlando']
@@ -36,8 +37,25 @@ module Elias
       @@connection
     end
 
-    def resort
-      Elias::Resort
+    def resorts
+      resorts = []
+
+      resorts << Elias::Resort.new(
+        name: 'Walt Disney World',
+        permalink: 'walt-disney-world'
+      )
+
+      resorts << Elias::Resort.new(
+        name: 'Disneyland Resort',
+        permalink: 'disneyland-resort'
+      )
+
+      resorts << Elias::Resort.new(
+        name: 'Universal Orlando',
+        permalink: 'universal-orlando'
+      )
+
+      resorts
     end
   end
 end
